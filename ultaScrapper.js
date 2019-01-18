@@ -30,6 +30,7 @@ let ultaScrapper = async() => {
 
 			collectionName = product.getElementsByClassName('prod-title');
 			productName    = product.getElementsByClassName('prod-desc');
+			productName.replace("/","-");
 			image          = product.getElementsByClassName('quick-view-prod')[0];
 			oldPrice = product.getElementsByClassName('pro-old-price')[0];
 			newPrice = product.getElementsByClassName('pro-new-price')[0];
@@ -70,4 +71,5 @@ ultaScrapper().then( (items) => {
 	console.log("There was an error rerieving the data", err);
 });
 
+module.exports = { ultaScrapper };
 
