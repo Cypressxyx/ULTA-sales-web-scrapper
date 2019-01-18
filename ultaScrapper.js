@@ -30,12 +30,6 @@ let ultaScrapper = async() => {
 
 			collectionName = product.getElementsByClassName('prod-title');
 			productName    = product.getElementsByClassName('prod-desc');
-			try {
-				productName.replace("/","-");
-			}
-			catch(err) {
-				console.log("No \ was found");
-			}
 			image    = product.getElementsByClassName('quick-view-prod')[0];
 			oldPrice = product.getElementsByClassName('pro-old-price')[0];
 			newPrice = product.getElementsByClassName('pro-new-price')[0];
