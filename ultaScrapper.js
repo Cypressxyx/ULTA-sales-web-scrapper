@@ -21,7 +21,7 @@ let ultaScrapper = async() => {
 		let imageSrc = "";
 		let oldPrice = "";
 		let newPrice = "";
-
+		let _pageType = "";
 		//get products from foo16
 		let products = (document.getElementById('foo16')).getElementsByTagName('li');
 
@@ -30,8 +30,13 @@ let ultaScrapper = async() => {
 
 			collectionName = product.getElementsByClassName('prod-title');
 			productName    = product.getElementsByClassName('prod-desc');
-			productName.replace("/","-");
-			image          = product.getElementsByClassName('quick-view-prod')[0];
+			try {
+				productName.replace("/","-");
+			}
+			catch(err) {
+				console.log("No \ was found");
+			}
+			image    = product.getElementsByClassName('quick-view-prod')[0];
 			oldPrice = product.getElementsByClassName('pro-old-price')[0];
 			newPrice = product.getElementsByClassName('pro-new-price')[0];
 
@@ -44,7 +49,7 @@ let ultaScrapper = async() => {
 				oldPrice = oldPrice.innerText;
 				newPrice = newPrice.innerText;
 
-				allProducts.push({collectionName, productName, imageSrc, oldPrice, newPrice});
+				allProducts.push({collectionName, productName, imageSrc, oldPrice, newPrice, _pageType});
 			}
 			catch(err) {
 				console.log("there was an error lmao");
